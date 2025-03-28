@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+      #red {
+        background-color: red;
+      }
+      #blue {
+        background: blue;
+      }
+      #yellow {
+        background-color: yellow;
+      }
+      #purple {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chọn màu nền bạn yêu thích</h1>
+    <div class="button">
+      <button id="red">Đỏ</button>
+      <button id="blue">Xanh</button>
+      <button id="yellow">Vàng</button>
+      <button id="purple">Tím</button>
+    </div>
+    <p>Trang sẽ ghi nhớ màu bạn đã chọn kể cả khi tải lại</p>
+    <script>
+      const bodyE = document.querySelector("body");
+      const redE = document.querySelector("#red");
+      const blueE = document.querySelector("#blue");
+      const yellowE = document.querySelector("#yellow");
+      const purpleE = document.querySelector("#purple");
+
+      function changeBackground(color) {
+        bodyE.style.backgroundColor = color;
+        localStorage.setItem("bgColor", color);
+      }
+
+      const savedColor = localStorage.getItem("bgColor");
+      if (savedColor) {
+        bodyE.style.backgroundColor = savedColor;
+      }
+
+      redE.addEventListener("click", () => changeBackground("red"));
+      blueE.addEventListener("click", () => changeBackground("blue"));
+      yellowE.addEventListener("click", () => changeBackground("yellow"));
+      purpleE.addEventListener("click", () => changeBackground("purple"));
+    </script>
+  </body>
+</html>
