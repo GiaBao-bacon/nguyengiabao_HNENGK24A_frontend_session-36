@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #f4f4f4;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      li {
+        list-style: none;
+      }
+      img {
+        width: 150px;
+        height: 110px;
+        border-radius: 5px;
+      }
+      .item {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        width: 400px;
+        padding: 20px;
+        gap: 30px;
+        border-radius: 7px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      button {
+        width: 80px;
+        height: 30px;
+        background-color: green;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bạn thích món nào nhất?</h1>
+      <ul class="list">
+        <li class="item">
+          <img
+            src="https://i.ex-cdn.com/vntravellive.com/files/news/2019/10/22/nhung-quan-bun-bo-hue-ngon-nhat-tphcm-221607.jpg"
+            alt=""
+          />
+          <div class="content">
+            <h3>Bún bò Huế</h3>
+            <div id="liked1"></div>
+            <button onclick="likeClick1()">Thích +1</button>
+          </div>
+        </li>
+        <li class="item">
+          <img
+            src="https://sakos.vn/wp-content/uploads/2024/07/1658123252-cover_pho-1.jpg"
+            alt=""
+          />
+          <div class="content">
+            <h3>Phở bò Hà Nội</h3>
+            <div id="liked2"></div>
+            <button onclick="likeClick2()">Thích +1</button>
+          </div>
+        </li>
+        <li class="item">
+          <img
+            src="https://cafefcdn.com/203337114487263232/2022/12/7/photo-9-1670398141900764774990.jpg"
+            alt=""
+          />
+          <div class="content">
+            <h3>Cơm tấm Sài Gòn</h3>
+            <div id="liked3"></div>
+            <button onclick="likeClick3()">Thích +1</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const liked1E = document.querySelector("#liked1");
+      const liked2E = document.querySelector("#liked2");
+      const liked3E = document.querySelector("#liked3");
+      let likesLocal = JSON.parse(localStorage.getItem("likes")) || [0, 0, 0];
+      console.log(likesLocal);
+      liked1E.innerHTML = `💖 ${likesLocal[0]} lượt thích`;
+      liked2E.innerHTML = `💖 ${likesLocal[1]} lượt thích`;
+      liked3E.innerHTML = `💖 ${likesLocal[2]} lượt thích`;
+      function likeClick1() {
+        likesLocal[0] += 1;
+        liked1E.innerHTML = `💖 ${likesLocal[0]} lượt thích`;
+        localStorage.setItem("likes", JSON.stringify(likesLocal));
+      }
+      function likeClick2() {
+        likesLocal[1] += 1;
+        liked2E.innerHTML = `💖 ${likesLocal[1]} lượt thích`;
+        localStorage.setItem("likes", JSON.stringify(likesLocal));
+      }
+      function likeClick3() {
+        likesLocal[2] += 1;
+        liked3E.innerHTML = `💖 ${likesLocal[2]} lượt thích`;
+        localStorage.setItem("likes", JSON.stringify(likesLocal));
+      }
+    </script>
+  </body>
+</html>
